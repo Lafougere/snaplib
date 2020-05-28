@@ -1,0 +1,129 @@
+{
+  "name": "snaplib",
+  "productName": "SnapLib",
+  "version": "0.0.1",
+  "description": "An open source picture manager for Linux, MacOS and Windows (beta)",
+  "main": ".webpack/main",
+  "extraEntries": [
+    "@/preload.js"
+  ],
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint --ext .ts .",
+    "postinstall": "node fix-relocator.js",
+    "test": "mocha './tests/*.spec.js'"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Axel Glorieux",
+    "email": "axel.glorieux@gmail.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "asset_manager"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "preload": [
+                "./src/preload.js"
+              ],
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.ts",
+                  "name": "main_window"
+                },
+                {
+                  "html": "./src/loader.html",
+                  "js": "./src/loader-renderer.ts",
+                  "name": "loader_window"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "6.0.0-beta.50",
+    "@electron-forge/maker-deb": "6.0.0-beta.50",
+    "@electron-forge/maker-rpm": "6.0.0-beta.50",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.50",
+    "@electron-forge/maker-zip": "6.0.0-beta.50",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.50",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@types/async": "^3.2.3",
+    "@types/tinycolor2": "^1.4.2",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
+    "chai": "^4.2.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.0.0",
+    "electron": "8.1.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "fork-ts-checker-webpack-plugin": "^3.1.1",
+    "mocha": "^7.1.2",
+    "node-loader": "^0.6.0",
+    "should": "^13.2.3",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.0"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^1.7.4",
+    "@tensorflow/tfjs-node-gpu": "^1.7.4",
+    "@types/lodash-es": "^4.17.3",
+    "@webcomponents/webcomponentsjs": "^2.4.2",
+    "async": "^3.2.0",
+    "async-es": "^3.2.0",
+    "canvas": "^2.6.1",
+    "colorthief": "^2.3.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "exif-js": "^2.3.0",
+    "exifr": "^5.0.2",
+    "exifreader": "^3.11.2",
+    "face-api.js": "^0.22.2",
+    "jimp": "^0.10.3",
+    "lit-element": "^2.2.1",
+    "lodash-es": "^4.17.15",
+    "nedb": "^1.8.0",
+    "node-fetch": "^2.6.0",
+    "redux": "^4.0.5",
+    "sharp": "0.23.4",
+    "tinycolor2": "^1.4.1",
+    "typesafe-actions": "^5.1.0"
+  }
+}
