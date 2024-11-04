@@ -118,7 +118,7 @@
     "face-api.js": "^0.22.2",
     "jimp": "^0.10.3",
     "lit-element": "^2.2.1",
-    "lodash-es": "^4.17.15",
+    "lodash-es": "^4.17.21",
     "nedb": "^1.8.0",
     "node-fetch": "^2.6.0",
     "redux": "^4.0.5",
