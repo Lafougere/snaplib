@@ -107,7 +107,7 @@
     "@tensorflow/tfjs-node-gpu": "^1.7.4",
     "@types/lodash-es": "^4.17.3",
     "@webcomponents/webcomponentsjs": "^2.4.2",
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "async-es": "^3.2.0",
     "canvas": "^2.6.1",
     "colorthief": "^2.3.0",
